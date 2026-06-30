@@ -2,7 +2,7 @@
 
 This repository hosts my CS 499 capstone ePortfolio for Southern New Hampshire University's Computer Science program.
 
-🌸 **Live site:** [astridyami.github.io](https://astridyami.github.io)
+🌸 **Live site:** [https://astridyami.github.io](https://astridyami.github.io/AstridYami/)
 
 ## What's here
 
