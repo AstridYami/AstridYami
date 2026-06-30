@@ -173,7 +173,7 @@
 <header class="hero">
   <div class="wrap">
     <p class="eyebrow">Computer Science ePortfolio — SNHU, CS 499</p>
-    <h1>Astrid Ellis</h1>
+    <h1>Astrid Yami</h1>
     <p class="tagline">Data analyst building stronger software, security, and systems thinking underneath the analytics work I already do.</p>
     <div class="hero-links">
       <a class="pill" href="#self-assessment">Self-Assessment</a>
