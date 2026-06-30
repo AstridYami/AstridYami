@@ -14,7 +14,8 @@
     --ink-soft: #4A5160;
     --line: #DDD9CE;
     --teal: #2A7F7E;
-    --amber: #C97C3D;
+    --amber: #2F8F8A;
+    --pink: #C2447A;
     --card: #FFFFFF;
     --max: 880px;
   }
@@ -66,6 +67,7 @@
     line-height: 1.05;
     margin: 0 0 18px;
     letter-spacing: -0.01em;
+    color: var(--pink);
   }
   .tagline{
     font-size: 19px;
@@ -110,6 +112,7 @@
     font-weight: 500;
     font-size: 30px;
     margin: 0 0 20px;
+    color: var(--pink);
   }
   p{ color: var(--ink-soft); margin: 0 0 16px; max-width: 680px; }
   p:last-child{ margin-bottom: 0; }
@@ -154,6 +157,28 @@
     margin-top: 20px;
   }
 
+  /* ---------- Folder tree block ---------- */
+  .tree{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    background: var(--pink);
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin: 16px 0 0;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .tree code{
+    color: var(--bg);
+    font-family: inherit;
+  }
+  .tree .c{
+    color: var(--bg);
+    opacity: .75;
+    font-style: italic;
+  }
+
   /* ---------- Footer ---------- */
   footer{
     padding: 40px 0 60px;
@@ -173,7 +198,7 @@
 <header class="hero">
   <div class="wrap">
     <p class="eyebrow">Computer Science ePortfolio — SNHU, CS 499</p>
-    <h1>Astrid Yami</h1>
+    <h1>Astrid Yami 🌸</h1>
     <p class="tagline">Data analyst building stronger software, security, and systems thinking underneath the analytics work I already do.</p>
     <div class="hero-links">
       <a class="pill" href="#self-assessment">Self-Assessment</a>
@@ -245,6 +270,31 @@
     </div>
 
     <p class="note">Narratives explaining the reasoning behind each enhancement will be added here as they're completed in Modules Two through Four.</p>
+
+    <p class="section-label" style="margin-top:36px;">Project structure</p>
+    <pre class="tree"><code>EventTrackerApp/
+├── app/
+│   ├── build.gradle
+│   └── src/
+│       ├── main/
+│       │   ├── AndroidManifest.xml
+│       │   ├── java/com/projecttwoastridelliseventtracker/
+│       │   │   ├── LoginActivity.java      <span class="c">// login + registration</span>
+│       │   │   ├── DataActivity.java       <span class="c">// main event list, CRUD UI</span>
+│       │   │   ├── MainActivity.java       <span class="c">// unused, target for removal</span>
+│       │   │   ├── SmsActivity.java        <span class="c">// SMS permission + reminder</span>
+│       │   │   ├── DatabaseHelper.java     <span class="c">// SQLite schema + access</span>
+│       │   │   ├── Repo.java               <span class="c">// data-access layer</span>
+│       │   │   ├── Event.java              <span class="c">// event model</span>
+│       │   │   └── EventAdapter.java       <span class="c">// RecyclerView adapter</span>
+│       │   └── res/
+│       │       ├── layout/                 <span class="c">// activity_login, activity_data, ...</span>
+│       │       ├── values/                 <span class="c">// strings, colors, themes</span>
+│       │       └── drawable/ · mipmap-anydpi/ · xml/
+│       ├── androidTest/java/.../ExampleInstrumentedTest.java
+│       └── test/java/.../ExampleUnitTest.java
+├── build.gradle
+└── settings.gradle</code></pre>
   </div>
 </section>
 
