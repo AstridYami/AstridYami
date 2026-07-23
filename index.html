@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astrid Yami — Computer Science ePortfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FAFAF6;
+    --ink: #1C2230;
+    --ink-soft: #4A5160;
+    --line: #DDD9CE;
+    --teal: #2A7F7E;
+    --pink: #C2447A;
+    --card: #FFFFFF;
+    --max: 880px;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: var(--teal); text-decoration: none; }
+  a:hover{ text-decoration: underline; }
+  .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+
+  /* Hero */
+  header.hero{ padding: 100px 0 70px; }
+  .eyebrow{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; letter-spacing: .04em;
+    color: var(--teal); margin: 0 0 18px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before{ content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); display: inline-block; }
+  h1{
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: clamp(40px, 6vw, 58px); line-height: 1.05;
+    margin: 0 0 18px; letter-spacing: -0.01em; color: var(--pink);
+  }
+  .tagline{ font-size: 19px; color: var(--ink-soft); max-width: 620px; margin: 0 0 30px; }
+  .hero-links{ display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill{
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    padding: 9px 16px; border: 1px solid var(--line);
+    border-radius: 999px; color: var(--ink); background: var(--card);
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .pill:hover{ border-color: var(--teal); text-decoration: none; transform: translateY(-1px); }
+
+  /* Sections */
+  section{ padding: 64px 0; }
+  .section-label{
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    color: var(--teal); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 14px;
+  }
+  h2{ font-family: 'Fraunces', serif; font-weight: 500; font-size: 30px; margin: 0 0 20px; color: var(--pink); }
+  p{ color: var(--ink-soft); margin: 0 0 16px; max-width: 680px; }
+  p:last-child{ margin-bottom: 0; }
+
+  /* Cards */
+  .card{ background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 28px 28px 24px; margin-top: 28px; }
+  .card h3{ font-family: 'Inter', sans-serif; font-size: 19px; font-weight: 600; margin: 0 0 8px; }
+  .tags{ display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 18px; }
+  .tag{ font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-soft); background: #F1EFE6; border-radius: 6px; padding: 4px 9px; }
+  .card .links{ display: flex; gap: 18px; font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+
+  /* Note */
+  .note{
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    color: var(--ink-soft); background: #F1EFE6;
+    border-left: 3px solid var(--teal); padding: 12px 16px;
+    border-radius: 4px; margin-top: 20px;
+  }
+
+  /* Folder tree */
+  .tree{
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    line-height: 1.7; background: var(--pink);
+    border-radius: 10px; padding: 22px 24px;
+    margin: 16px 0 0; overflow-x: auto; white-space: pre;
+  }
+  .tree code{ color: var(--bg); font-family: inherit; }
+  .tree .c{ color: var(--bg); opacity: .7; font-style: italic; }
+
+  footer{ padding: 40px 0 60px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ink-soft); }
+
+  @media (max-width: 600px){
+    header.hero{ padding: 70px 0 50px; }
+    section{ padding: 48px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Computer Science ePortfolio — SNHU CS 499</p>
+    <h1>Astrid Yami 🌸</h1>
+    <p class="tagline">Data analyst, Data Visualization Practioner, and Creative Tech</p>
+    <div class="hero-links">
+      <a class="pill" href="#self-assessment">Self-Assessment</a>
+      <a class="pill" href="#code-review">Code Review</a>
+      <a class="pill" href="#artifact">Artifact</a>
+      <a class="pill" href="#narratives">Narratives</a>
+      <a class="pill" href="#project-structure">Project Structure</a>
+      <a class="pill" href="#references">References &amp; Resources</a>
+    </div>
+  </div>
+</header>
+
+<section id="self-assessment">
+  <div class="wrap">
+    <h2>Professional Self-Assessment</h2>
+  </div>
+</section>
+
+<section id="code-review">
+  <div class="wrap">
+    <h2>Code Review</h2>
+  </div>
+</section>
+
+<section id="artifact">
+  <div class="wrap">
+    <h2>Artifact: Travlr Getaways</h2>
+    <p>A full stack travel booking web application originally built for CS-465: Full Stack Development. The application includes both front-end and back-end functionality, with API routes, database models, views, and server-side logic organized into separate folders. Routes and middleware connect components and support user interactions.</p>
+    <p>This single artifact is enhanced across all three required categories: software design and engineering, algorithms and data structures, and databases.</p>
+
+    <div class="card">
+      <h3>Software Design &amp; Engineering</h3>
+      <p>Improving modularity, organization, and documentation throughout the application to support better maintainability and reflect software engineering principles.</p>
+      <div class="tags">
+        <span class="tag">modularity</span>
+        <span class="tag">documentation</span>
+        <span class="tag">Express.js</span>
+      </div>
+      <div class="links">
+        <a href="https://github.com/AstridYami/CS465-fullstack" target="_blank" rel="noopener">View repository →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Algorithms &amp; Data Structures</h3>
+      <p>Evaluating existing logic and data handling to reduce unnecessary processing, improve efficiency, and simplify logic structures throughout the application.</p>
+      <div class="tags">
+        <span class="tag">efficiency</span>
+        <span class="tag">data handling</span>
+        <span class="tag">performance</span>
+      </div>
+      <div class="links">
+        <a href="https://github.com/AstridYami/CS465-fullstack" target="_blank" rel="noopener">View repository →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Databases</h3>
+      <p>Strengthening authentication methods, improving input validation, and increasing database security to reduce vulnerabilities and better protect user information.</p>
+      <div class="tags">
+        <span class="tag">input validation</span>
+        <span class="tag">authentication</span>
+        <span class="tag">security</span>
+      </div>
+      <div class="links">
+        <a href="https://github.com/AstridYami/CS465-fullstack" target="_blank" rel="noopener">View repository →</a>
+      </div>
+    </div>
+
+    <h2 id="narratives">Narratives</h2>
+
+    <h2 id="project-structure">Project Structure</h2>
+    <pre class="tree"><code>travlr-getaways/
+├── app.js                          <span class="c">// Express root: routes, CORS, Passport init</span>
+├── app_api/
+│   ├── config/
+│   │   └── passport.js             <span class="c">// LocalStrategy with email + PBKDF2</span>
+│   ├── controllers/
+│   │   ├── authentication.js       <span class="c">// register + login controllers</span>
+│   │   └── trips.js                <span class="c">// CRUD controllers for trips</span>
+│   ├── models/
+│   │   ├── db.js                   <span class="c">// MongoDB connection</span>
+│   │   ├── travlr.js               <span class="c">// Mongoose trip schema</span>
+│   │   └── user.js                 <span class="c">// User schema: PBKDF2 hash + JWT generation</span>
+│   └── routes/
+│       └── index.js                <span class="c">// API route definitions + auth middleware</span>
+├── app_server/
+│   ├── controllers/
+│   ├── routes/
+│   └── views/                      <span class="c">// Handlebars templates (customer site)</span>
+├── app_admin/                      <span class="c">// Angular SPA (admin interface)</span>
+│   └── src/app/
+│       ├── services/
+│       │   ├── trip-data.service.ts       <span class="c">// API calls for trips + auth</span>
+│       │   └── authentication.service.ts  <span class="c">// JWT storage + login state</span>
+│       ├── add-trip/  edit-trip/  login/
+│       ├── trip-card/ trip-listing/
+│       └── models/    utils/
+└── public/                         <span class="c">// Static assets (CSS, images)</span></code></pre>
+  </div>
+</section>
+
+<section id="references">
+  <div class="wrap">
+    <h2>References &amp; Resources</h2>
+    <p>Documentation and tutorials used to build this portfolio site.</p>
+    <pre class="tree"><code>/* --- GitHub Docs --- */
+GitHub Docs — Quickstart for GitHub Pages
+  https://docs.github.com/en/pages/quickstart
+
+GitHub Docs — Adding a theme with Jekyll
+  https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll
+
+GitHub Docs — Configuring a publishing source
+  https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+
+/* --- GeeksforGeeks --- */
+GeeksforGeeks — HTML Layout Elements and Techniques
+  https://www.geeksforgeeks.org/html-layout/
+
+GeeksforGeeks — CSS Flexbox
+  https://www.geeksforgeeks.org/css-flexbox/
+
+GeeksforGeeks — CSS Variables
+  https://www.geeksforgeeks.org/css-variables/
+
+GeeksforGeeks — How to create a responsive website using CSS
+  https://www.geeksforgeeks.org/how-to-create-a-responsive-website-using-css/</code></pre>
+
+    <p style="margin-top: 32px;">References used for planned enhancements to the Travlr Getaways application.</p>
+    <pre class="tree"><code>/* --- Software Design & Engineering --- */
+GeeksforGeeks — Middleware in Express.js
+  https://www.geeksforgeeks.org/middleware-in-express-js/
+
+GeeksforGeeks — REST API CRUD Operations
+  https://www.geeksforgeeks.org/rest-api-introduction/
+
+GeeksforGeeks — JWT Authentication with Node.js
+  https://www.geeksforgeeks.org/jwt-authentication-with-node-js/
+
+/* --- Algorithms & Data Structures --- */
+GeeksforGeeks — Pagination in Node.js using Mongoose
+  https://www.geeksforgeeks.org/node-js-mongoose-pagination/
+
+GeeksforGeeks — MongoDB Text Search
+  https://www.geeksforgeeks.org/mongodb-text-search/
+
+GeeksforGeeks — Indexing in MongoDB
+  https://www.geeksforgeeks.org/indexing-in-mongodb/
+
+/* --- Databases & Security --- */
+GeeksforGeeks — Mongoose Schema Validation
+  https://www.geeksforgeeks.org/mongoose-validation/
+
+GeeksforGeeks — Rate Limiting in Node.js
+  https://www.geeksforgeeks.org/rate-limiting-in-node-js-using-express-rate-limit/
+
+GeeksforGeeks — Environment Variables in Node.js
+  https://www.geeksforgeeks.org/how-to-use-environment-variables-in-node-js/
+
+GeeksforGeeks — CORS in Node.js
+  https://www.geeksforgeeks.org/how-to-allow-cors-in-node-js/</code></pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Built for CS 499 — Southern New Hampshire University · Updated July 2026
+  </div>
+</footer>
+
+</body>
+</html>
