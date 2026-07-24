@@ -138,11 +138,12 @@
 
     <div class="card">
       <h3>Software Design &amp; Engineering</h3>
-      <p>Improving modularity, organization, and documentation throughout the application to support better maintainability and reflect software engineering principles.</p>
+      <p>Fixed a broken authentication middleware bug where POST and PUT routes silently called an undefined function, leaving write operations unprotected. Extracted the auth middleware into its own dedicated module, added the missing DELETE endpoint with full error handling, rewrote controller error handlers with try/catch blocks and scoped error messages, added JSDoc comments throughout, and removed leftover debug statements.</p>
       <div class="tags">
-        <span class="tag">modularity</span>
-        <span class="tag">documentation</span>
+        <span class="tag">authentication fix</span>
+        <span class="tag">REST API</span>
         <span class="tag">Express.js</span>
+        <span class="tag">middleware</span>
       </div>
       <div class="links">
         <a href="https://github.com/AstridYami/CS465-fullstack" target="_blank" rel="noopener">View repository →</a>
@@ -177,6 +178,15 @@
 
     <h2 id="narratives">Narratives</h2>
 
+    <div class="card">
+      <h3>Enhancement One: Software Design &amp; Engineering</h3>
+      <p>This enhancement focused on diagnosing and fixing a real authentication vulnerability in the API, improving the modularity of the codebase, and adding missing CRUD functionality. The auth middleware was extracted into its own module, write routes were consolidated to single protected handlers, the missing DELETE endpoint was added with full error handling, and JSDoc comments were added throughout.</p>
+      <div class="tags">
+        <span class="tag">Outcome 2</span>
+        <span class="tag">Outcome 4</span>
+      </div>
+    </div>
+
     <h2 id="project-structure">Project Structure</h2>
     <pre class="tree"><code>travlr-getaways/
 ├── app.js                          <span class="c">// Express root: routes, CORS, Passport init</span>
@@ -186,6 +196,8 @@
 │   ├── controllers/
 │   │   ├── authentication.js       <span class="c">// register + login controllers</span>
 │   │   └── trips.js                <span class="c">// CRUD controllers for trips</span>
+│   ├── middleware/
+│   │   └── authenticate.js         <span class="c">// JWT verification middleware (Enhancement One)</span>
 │   ├── models/
 │   │   ├── db.js                   <span class="c">// MongoDB connection</span>
 │   │   ├── travlr.js               <span class="c">// Mongoose trip schema</span>
