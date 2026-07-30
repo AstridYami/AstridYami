@@ -138,12 +138,11 @@
 
     <div class="card">
       <h3>Software Design &amp; Engineering</h3>
-      <p>Fixed a broken authentication middleware bug where POST and PUT routes silently called an undefined function, leaving write operations unprotected. Extracted the auth middleware into its own dedicated module, added the missing DELETE endpoint with full error handling, rewrote controller error handlers with try/catch blocks and scoped error messages, added JSDoc comments throughout, and removed leftover debug statements.</p>
+      <p>Improving modularity, organization, and documentation throughout the application to support better maintainability and reflect software engineering principles.</p>
       <div class="tags">
-        <span class="tag">authentication fix</span>
-        <span class="tag">REST API</span>
+        <span class="tag">modularity</span>
+        <span class="tag">documentation</span>
         <span class="tag">Express.js</span>
-        <span class="tag">middleware</span>
       </div>
       <div class="links">
         <a href="https://github.com/AstridYami/CS465-fullstack" target="_blank" rel="noopener">View repository →</a>
@@ -152,10 +151,11 @@
 
     <div class="card">
       <h3>Algorithms &amp; Data Structures</h3>
-      <p>Evaluating existing logic and data handling to reduce unnecessary processing, improve efficiency, and simplify logic structures throughout the application.</p>
+      <p>Replaced an unbounded full-collection query with a paginated API endpoint that accepts page and limit parameters and runs the count and query in parallel. Added a search and filter endpoint accepting keyword, resort, maximum price, and start date with AND logic. Added a MongoDB text index on name, description, and resort fields to reduce keyword search from a full collection scan to an indexed lookup.</p>
       <div class="tags">
-        <span class="tag">efficiency</span>
-        <span class="tag">data handling</span>
+        <span class="tag">pagination</span>
+        <span class="tag">search &amp; filter</span>
+        <span class="tag">MongoDB text index</span>
         <span class="tag">performance</span>
       </div>
       <div class="links">
@@ -187,6 +187,15 @@
       </div>
     </div>
 
+    <div class="card">
+      <h3>Enhancement Two: Algorithms &amp; Data Structures</h3>
+      <p>The original tripsList controller returned the entire trips collection on every request with no limit. This enhancement replaced it with a paginated endpoint using skip and limit, running the count and query in parallel with Promise.all. A filtered search endpoint was added with AND logic across keyword, resort, price, and date parameters, and a MongoDB text index was added to support efficient keyword lookup. The search route was placed before the parameterized route to prevent Express from misrouting requests.</p>
+      <div class="tags">
+        <span class="tag">Outcome 3</span>
+        <span class="tag">Outcome 4</span>
+      </div>
+    </div>
+
     <h2 id="project-structure">Project Structure</h2>
     <pre class="tree"><code>travlr-getaways/
 ├── app.js                          <span class="c">// Express root: routes, CORS, Passport init</span>
@@ -196,8 +205,6 @@
 │   ├── controllers/
 │   │   ├── authentication.js       <span class="c">// register + login controllers</span>
 │   │   └── trips.js                <span class="c">// CRUD controllers for trips</span>
-│   ├── middleware/
-│   │   └── authenticate.js         <span class="c">// JWT verification middleware (Enhancement One)</span>
 │   ├── models/
 │   │   ├── db.js                   <span class="c">// MongoDB connection</span>
 │   │   ├── travlr.js               <span class="c">// Mongoose trip schema</span>
