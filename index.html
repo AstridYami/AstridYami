@@ -127,6 +127,15 @@
 <section id="code-review">
   <div class="wrap">
     <h2>Code Review</h2>
+    <div style="margin-top: 20px; border-radius: 10px; overflow: hidden;">
+      <iframe width="100%" height="480"
+        src="https://www.youtube.com/embed/CR8e8EpWLgM"
+        title="CS 499 Code Review — Travlr Getaways"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
   </div>
 </section>
 
@@ -151,11 +160,10 @@
 
     <div class="card">
       <h3>Algorithms &amp; Data Structures</h3>
-      <p>Replaced an unbounded full-collection query with a paginated API endpoint that accepts page and limit parameters and runs the count and query in parallel. Added a search and filter endpoint accepting keyword, resort, maximum price, and start date with AND logic. Added a MongoDB text index on name, description, and resort fields to reduce keyword search from a full collection scan to an indexed lookup.</p>
+      <p>Evaluating existing logic and data handling to reduce unnecessary processing, improve efficiency, and simplify logic structures throughout the application.</p>
       <div class="tags">
-        <span class="tag">pagination</span>
-        <span class="tag">search &amp; filter</span>
-        <span class="tag">MongoDB text index</span>
+        <span class="tag">efficiency</span>
+        <span class="tag">data handling</span>
         <span class="tag">performance</span>
       </div>
       <div class="links">
@@ -177,24 +185,6 @@
     </div>
 
     <h2 id="narratives">Narratives</h2>
-
-    <div class="card">
-      <h3>Enhancement One: Software Design &amp; Engineering</h3>
-      <p>This enhancement focused on diagnosing and fixing a real authentication vulnerability in the API, improving the modularity of the codebase, and adding missing CRUD functionality. The auth middleware was extracted into its own module, write routes were consolidated to single protected handlers, the missing DELETE endpoint was added with full error handling, and JSDoc comments were added throughout.</p>
-      <div class="tags">
-        <span class="tag">Outcome 2</span>
-        <span class="tag">Outcome 4</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Enhancement Two: Algorithms &amp; Data Structures</h3>
-      <p>The original tripsList controller returned the entire trips collection on every request with no limit. This enhancement replaced it with a paginated endpoint using skip and limit, running the count and query in parallel with Promise.all. A filtered search endpoint was added with AND logic across keyword, resort, price, and date parameters, and a MongoDB text index was added to support efficient keyword lookup. The search route was placed before the parameterized route to prevent Express from misrouting requests.</p>
-      <div class="tags">
-        <span class="tag">Outcome 3</span>
-        <span class="tag">Outcome 4</span>
-      </div>
-    </div>
 
     <h2 id="project-structure">Project Structure</h2>
     <pre class="tree"><code>travlr-getaways/
