@@ -186,6 +186,40 @@
 
     <h2 id="narratives">Narratives</h2>
 
+    <div class="card">
+      <h3>Enhancement One: Software Design &amp; Engineering</h3>
+      <p>Travlr Getaways is a full stack travel booking web application built in CS-465: Full Stack Development. I selected it for the software design and engineering category because the authentication bug I found during the code review was a genuine security flaw. The POST and PUT routes each registered two handlers. The second called a function named authenticateJWT which was never defined. The actual middleware was defined as auth. So write operations that should have required a valid token were silently unprotected.</p>
+      <p>My fix consolidated each route to a single protected handler using the correct function name and extracted the middleware into its own dedicated module at app_api/middleware/authenticate.js. That separation of concerns is what makes this a software design improvement rather than just a bug fix. Beyond that I added the missing DELETE endpoint since administrators had no way to remove trips before. And I rewrote the error handling across all four controller methods replacing out-of-scope err references with try/catch blocks and scoped error messages. I also added JSDoc comments to every controller method and route group and removed leftover debug statements.</p>
+      <p>The most useful thing I learned was that bugs which look intentional are often the most dangerous. The duplicate handlers looked like someone tried to add authentication to an existing route without removing the old one. But the function name was wrong so neither handler worked. That reinforced something practical about code review: reading carefully matters more than reading quickly.</p>
+      <div class="tags">
+        <span class="tag">Outcome 2</span>
+        <span class="tag">Outcome 4</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Enhancement Two: Algorithms &amp; Data Structures</h3>
+      <p>I selected this artifact for the algorithms and data structures category because the data retrieval pattern had a clear and fixable performance problem. The original tripsList controller called .find({}) with no limit and returned the entire trips collection on every request. That is an O(n) operation where every record in the database is processed and transferred regardless of how many the client actually needs.</p>
+      <p>I replaced the unbounded query with a paginated version that accepts page and limit parameters and returns only the records for that page. I also ran the count and the paged query in parallel using Promise.all to reduce total query time. The response now includes the total record count so clients can calculate page totals without a separate request. I added a search and filter endpoint that accepts optional keyword, resort, maximum price, and start date parameters with AND logic. Missing or invalid parameters are ignored and empty results return an empty array rather than a 404. I also added a MongoDB text index on the name, description, and resort fields. Without the index a keyword search would require a full collection scan. With it the operation drops to an indexed lookup at the cost of a small increase in storage and write overhead.</p>
+      <p>The most interesting challenge was the route ordering problem. When I first added the search route after the /:tripCode route Express was matching the string search as a trip code and sending the request to tripsFindByCode instead of tripsSearch. Moving the search route above the parameterized route fixed it. That was a useful reminder that Express matches routes in order and that placement of parameterized routes matters more than it looks.</p>
+      <div class="tags">
+        <span class="tag">Outcome 3</span>
+        <span class="tag">Outcome 4</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Enhancement Three: Databases</h3>
+      <p>I selected this artifact for the databases category because the schema had a concrete type error, the authentication endpoints had no protection against repeated requests, and the data model had no normalization. The perPerson price field was typed as a String in the Mongoose schema which meant any price-based filtering or comparison would fail silently and would have broken the search endpoint built in Enhancement Two.</p>
+      <p>I corrected the type to Number and added field-level validation including a minimum value, code length constraints, and a future-date validator on the start field enforced at both the schema and controller layers. I added a compound index on resort and start date to support the most common filter pattern in a single index scan. I applied rate limiting to the login and register endpoints at 20 requests per IP per 15-minute window to protect stored credentials from brute force attacks. I also moved the CORS allowed origin to an environment variable so it can be configured without touching source code.</p>
+      <p>After instructor feedback I added normalization to address a more significant database design concern. The resort field was previously a plain String repeated across every trip document. I extracted it into its own resorts collection and updated the trip schema to reference it by ObjectId. This eliminates data redundancy so that a change to a resort name or description requires updating one document rather than every trip that shares that resort. Every trip query now uses .populate to retrieve full resort details. A new resorts controller and route set provides full CRUD for the resorts collection.</p>
+      <p>The most useful thing I learned was about the relationship between layers of an application. The perPerson type error was invisible at the interface level but had downstream consequences at the query layer. The normalization work reinforced that database design decisions compound across the whole system in ways that are not always visible until you trace the data flow end to end.</p>
+      <div class="tags">
+        <span class="tag">Outcome 3</span>
+        <span class="tag">Outcome 5</span>
+      </div>
+    </div>
+
     <h2 id="project-structure">Project Structure</h2>
     <pre class="tree"><code>travlr-getaways/
 ├── app.js                          <span class="c">// Express root: routes, CORS, Passport init</span>
